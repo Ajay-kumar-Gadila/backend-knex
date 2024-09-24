@@ -3,7 +3,8 @@ import express from "express";
 import peopleRoutes from "./routes/people.js";
 import "./db/dbconnection.js"; 
 import cors from "cors";
-
+import enrollmentService from "./routes/enrollmentService.js"
+import userService from "./routes/userService.js";
 const app = express();
 const port = 5000;
 
@@ -15,10 +16,10 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 
-// Use people routes
 app.use("/api/people", peopleRoutes);
+app.use("/api/enrollment", enrollmentService );
+app.use("/api/user", userService );
 
-// Start the server
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
 });

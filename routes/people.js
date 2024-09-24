@@ -1,10 +1,9 @@
-// routes/people.js
 import express from "express";
 import db from "../db/dbconnection.js";
 
 const router = express.Router();
+router.use(express.json());
 
-// POST API to create a new person
 router.post("/", async (req, res) => {
   const {
     first_name,
@@ -90,7 +89,6 @@ router.post("/", async (req, res) => {
   }
 });
 
-// 
 router.get("/search", async (req, res) => {
   const { student_id, employee_id } = req.query;
 
@@ -148,7 +146,6 @@ router.put('/:id', async (req, res) => {
     });
   }
 });
-
 
 router.delete("/:id", async (req, res) => {
   const { id } = req.params;
